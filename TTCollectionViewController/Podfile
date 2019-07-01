@@ -1,5 +1,6 @@
 platform :'ios','9.0'
 target 'TTCollectionViewController' do
     pod 'Masonry'
+    pod 'YYKit'
   use_frameworks!
 end

@@ -12,6 +12,9 @@
 #import "TTClubCollectionFooterView.h"
 #import "BannerModel.h"
 #import "TTBannerViewCell.h"
+
+#import "TTRoomChatViewController.h"
+#import "TTMessageViewController.h"
 static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
 
 @interface TTClubCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -28,6 +31,11 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.equalTo(self.view);
     }];
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -51,7 +59,7 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
         //获取cell视图，内部通过去缓存池中取，如果缓存池中没有，就自动创建一个新的cell
         TTClubCollectionViewCell *cell=[TTClubCollectionViewCell cellWithCollectionView:collectionView forIndexPath:indexPath];
         cell.contentView.backgroundColor=kRandomColor;
-        cell.textLabel.text = [NSString stringWithFormat:@"Cell %2ld",indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"Cell %2ld",(long)indexPath.row];
         return cell;
     }
 }
@@ -92,7 +100,7 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
         TTClubCollectionFooterView *footerView=[TTClubCollectionFooterView footerViewWithCollectionView:collectionView forIndexPath:indexPath];
         //设置底部视图属性
         footerView.backgroundColor=kColorWithRGB(238, 238, 238);
-        footerView.textLabel.text = @"";//[NSString stringWithFormat:@"-Footer-%ld-",(long)indexPath.section];
+        footerView.textLabel.text = @"";
         return footerView;
         
     }
@@ -158,8 +166,18 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
 #pragma mark - UICollectionViewDelegate
 // CollectionViewCell被选中会调用
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *tipsTxext = [NSString stringWithFormat:@"点击选择了第%ld组，第%ld个方块",(long)indexPath.section,(long)indexPath.row];
-    Toast(tipsTxext);
+    if (indexPath.section==1) {
+        if (indexPath.row==0) {
+            TTRoomChatViewController *vc = [[TTRoomChatViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            TTMessageViewController *vc = [[TTMessageViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else{
+        NSString *tipsTxext = [NSString stringWithFormat:@"点击选择了第%ld组，第%ld个方块",(long)indexPath.section,(long)indexPath.row];
+        Toast(tipsTxext);
+    }
 }
 // CollectionViewCell取消选中会调用
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
