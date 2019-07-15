@@ -15,6 +15,7 @@
 
 #import "TTRoomChatViewController.h"
 #import "TTMessageViewController.h"
+#import "TTTableHeaderViewController.h"
 static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
 
 @interface TTClubCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -172,6 +173,11 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
             [self.navigationController pushViewController:vc animated:YES];
         }else{
             TTMessageViewController *vc = [[TTMessageViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else if (indexPath.section==2){
+        if (indexPath.row==0) {
+            TTTableHeaderViewController *vc = [[TTTableHeaderViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else{

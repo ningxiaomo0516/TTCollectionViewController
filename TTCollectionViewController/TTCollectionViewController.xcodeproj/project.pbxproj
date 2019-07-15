@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		716BD3F4B2721564868D4DD8 /* Pods_TTCollectionViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38389600F8C23D8CC31089EA /* Pods_TTCollectionViewController.framework */; };
+		E729398522D3324A00213FFB /* TTTableHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E729398422D3324A00213FFB /* TTTableHeaderViewController.m */; };
+		E729398822D3326000213FFB /* TTTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E729398722D3326000213FFB /* TTTableHeaderView.m */; };
 		E73A603F22C9F47F008E984A /* TTRoomChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E73A603E22C9F47F008E984A /* TTRoomChatViewController.m */; };
 		E73A604222C9F506008E984A /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E73A604122C9F506008E984A /* MessageModel.m */; };
 		E73A604522C9F560008E984A /* TTRoomChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E73A604422C9F560008E984A /* TTRoomChatTableViewCell.m */; };
@@ -36,6 +38,10 @@
 		38389600F8C23D8CC31089EA /* Pods_TTCollectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTCollectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D1C39226D6ADB0467BF4826 /* Pods-TTCollectionViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTCollectionViewController.release.xcconfig"; path = "Target Support Files/Pods-TTCollectionViewController/Pods-TTCollectionViewController.release.xcconfig"; sourceTree = "<group>"; };
 		79527D84B1FEE904520F6A4D /* Pods-TTCollectionViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTCollectionViewController.debug.xcconfig"; path = "Target Support Files/Pods-TTCollectionViewController/Pods-TTCollectionViewController.debug.xcconfig"; sourceTree = "<group>"; };
+		E729398322D3324A00213FFB /* TTTableHeaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTableHeaderViewController.h; sourceTree = "<group>"; };
+		E729398422D3324A00213FFB /* TTTableHeaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTableHeaderViewController.m; sourceTree = "<group>"; };
+		E729398622D3326000213FFB /* TTTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTableHeaderView.h; sourceTree = "<group>"; };
+		E729398722D3326000213FFB /* TTTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTableHeaderView.m; sourceTree = "<group>"; };
 		E73A603D22C9F47F008E984A /* TTRoomChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTRoomChatViewController.h; sourceTree = "<group>"; };
 		E73A603E22C9F47F008E984A /* TTRoomChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTRoomChatViewController.m; sourceTree = "<group>"; };
 		E73A604022C9F506008E984A /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
@@ -109,6 +115,17 @@
 				38389600F8C23D8CC31089EA /* Pods_TTCollectionViewController.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E729398222D331DD00213FFB /* 下拉放大 */ = {
+			isa = PBXGroup;
+			children = (
+				E729398322D3324A00213FFB /* TTTableHeaderViewController.h */,
+				E729398422D3324A00213FFB /* TTTableHeaderViewController.m */,
+				E729398622D3326000213FFB /* TTTableHeaderView.h */,
+				E729398722D3326000213FFB /* TTTableHeaderView.m */,
+			);
+			path = "下拉放大";
 			sourceTree = "<group>";
 		};
 		E73A603422C9EC55008E984A /* ChatRoom(直播列表) */ = {
@@ -228,6 +245,7 @@
 		E796280C22BB984500CA4E03 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E729398222D331DD00213FFB /* 下拉放大 */,
 				E73A603422C9EC55008E984A /* ChatRoom(直播列表) */,
 				E796280D22BB984500CA4E03 /* Toast */,
 				E796281022BB984500CA4E03 /* Basic */,
@@ -431,6 +449,8 @@
 				E796282E22BB984500CA4E03 /* TTClubCollectionViewController.m in Sources */,
 				E79627A322BB829600CA4E03 /* AppDelegate.m in Sources */,
 				E796282B22BB984500CA4E03 /* TYCyclePagerTransformLayout.m in Sources */,
+				E729398522D3324A00213FFB /* TTTableHeaderViewController.m in Sources */,
+				E729398822D3326000213FFB /* TTTableHeaderView.m in Sources */,
 				E796282722BB984500CA4E03 /* TTNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

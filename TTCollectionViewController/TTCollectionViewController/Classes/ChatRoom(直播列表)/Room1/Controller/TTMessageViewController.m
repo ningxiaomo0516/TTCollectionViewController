@@ -13,7 +13,7 @@ static NSString *const rctextCellIndentifier = @"TTMessageCell";
 @interface TTMessageViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *chatTableView;
-@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *messageArray;
 @property (nonatomic, strong) TTMessageCell *tempCell;
 
 @end
@@ -23,24 +23,6 @@ static NSString *const rctextCellIndentifier = @"TTMessageCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // 仔细观察cell的出现方式,cell的出现方式有一个动画
-    [self setupUI];
-    
-    // 模拟一些数据源
-    NSArray *nameArr = @[@"张三：", @"李四：", @"王五：", @"陈六：", @"吴老二："];
-    NSArray *messageArr = @[@"ash快点回家爱是妒忌哈市党和国家按时到岗哈时代光华撒国会大厦国会大厦国会大厦更好的噶山东黄金撒旦哈安师大噶是个混蛋撒",
-                            @"傲世江湖点撒恭候大驾水草玛瑙现在才明白你个坏蛋擦边沙尘暴你先走吧出现在",
-                            @"撒点花噶闪光灯",
-                            @"按时间大公司大概好久撒大概好久撒党和国家按时到岗哈师大就萨达数据库化打算几点撒谎就看电视骄傲的撒金葵花打暑假工大撒比的撒谎讲大话手机巴士差距啊市场报价啊山东黄金as擦伤擦啊as擦肩时擦市场报价按时VC阿擦把持啊三重才撒啊双层巴士吃按时吃啊双层巴士擦报啥错",
-                            @"as大帅哥大孤山街道安师大好噶时间过得撒黄金国度"];
-    // 向数据源中随机放入500个Model
-    self.dataArr = [[NSMutableArray alloc] init];
-    for (int i=0; i<500; i++) {
-        MessageModel *model = [[MessageModel alloc] init];
-        model.username = nameArr[arc4random()%nameArr.count];
-        model.message = messageArr[arc4random()%messageArr.count];
-        [self.dataArr addObject:model];
-    }
     
     // 我们再创建一个按钮，点击可从后面追加一些数据进来
     UIImage *rightImg = kGetImage(@"c51_plus_add");
@@ -53,6 +35,31 @@ static NSString *const rctextCellIndentifier = @"TTMessageCell";
     
     // 创建
     self.tempCell = [[TTMessageCell alloc] initWithStyle:0 reuseIdentifier:rctextCellIndentifier];
+    
+    
+    // 仔细观察cell的出现方式,cell的出现方式有一个动画
+    [self setupUI];
+    
+    // 模拟一些数据源
+    NSArray *nameArr = @[@"张三：", @"李四：", @"王五：", @"陈六：", @"吴老二："];
+    NSArray *messageArr = @[@"ash快点回家爱是妒忌哈市党和国家按时到岗哈时代光华撒国会大厦国会大厦国会大厦更好的噶山东黄金撒旦哈安师大噶是个混蛋撒",
+                            @"傲世江湖点撒恭候大驾水草玛瑙现在才明白你个坏蛋擦边沙尘暴你先走吧出现在",
+                            @"撒点花噶闪光灯",
+                            @"按时间大公司大概好久撒大概好久撒党和国家按时到岗哈师大就萨达数据库化打算几点撒谎就看电视骄傲的撒金葵花打暑假工大撒比的撒谎讲大话手机巴士差距啊市场报价啊山东黄金as擦伤擦啊as擦肩时擦市场报价按时VC阿擦把持啊三重才撒啊双层巴士吃按时吃啊双层巴士擦报啥错",
+                            @"as大帅哥大孤山街道安师大好噶时间过得撒黄金国度"];
+    // 向数据源中随机放入500个Model
+    self.messageArray = [[NSMutableArray alloc] init];
+    for (int i=0; i<500; i++) {
+        MessageModel *model = [[MessageModel alloc] init];
+        model.username = nameArr[arc4random()%nameArr.count];
+        model.message = messageArr[arc4random()%messageArr.count];
+        [self.messageArray addObject:model];
+    }
+    
+    // 再滚动到最底部
+    [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    [self.chatTableView reloadData];
+    
 }
 
 - (void)setupUI {
@@ -96,26 +103,26 @@ static NSString *const rctextCellIndentifier = @"TTMessageCell";
     MessageModel *model = [[MessageModel alloc] init];
     model.username = nameArr[arc4random()%nameArr.count];
     model.message = messageArr[arc4random()%messageArr.count];
-    [self.dataArr addObject:model];
+    [self.messageArray addObject:model];
     
     // 插入到tableView中
-    [self.chatTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.dataArr.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.chatTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.messageArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     
     
     // 再滚动到最底部
-    [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataArr.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArr.count;
+    return self.messageArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MessageModel *model = self.dataArr[indexPath.row];
+    MessageModel *model = self.messageArray[indexPath.row];
     if (model.cellHeight == 0) {
-        CGFloat cellHeight = [self.tempCell heightForModel:self.dataArr[indexPath.row]];
+        CGFloat cellHeight = [self.tempCell heightForModel:self.messageArray[indexPath.row]];
         // 缓存给model
         model.cellHeight = cellHeight;
         return cellHeight;
@@ -126,7 +133,7 @@ static NSString *const rctextCellIndentifier = @"TTMessageCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TTMessageCell *tools = [tableView dequeueReusableCellWithIdentifier:rctextCellIndentifier forIndexPath:indexPath];
-    [tools setMessageModel:self.dataArr[indexPath.row]];
+    [tools setMessageModel:self.messageArray[indexPath.row]];
     return tools;
 }
 

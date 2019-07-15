@@ -61,6 +61,8 @@ static NSString *const rctextCellIndentifier = @"TTRoomChatTableViewCell";
         [self.messageArray addObject:model];
     }
     
+    // 再滚动到最底部
+    [self.chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
     [self.chatTableView reloadData];
 }
 
