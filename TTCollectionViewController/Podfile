@@ -2,5 +2,6 @@ platform :'ios','9.0'
 target 'TTCollectionViewController' do
     pod 'Masonry'
     pod 'YYKit'
+    pod 'MJExtension'
   use_frameworks!
 end

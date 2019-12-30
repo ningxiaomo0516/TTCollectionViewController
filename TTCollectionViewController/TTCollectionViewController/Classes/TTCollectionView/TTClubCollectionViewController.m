@@ -16,6 +16,9 @@
 #import "TTRoomChatViewController.h"
 #import "TTMessageViewController.h"
 #import "TTTableHeaderViewController.h"
+#import "RadioCollectionViewController.h"
+#import "TagsCollectionViewController.h"
+#import "CardCollectionViewController.h"
 static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
 
 @interface TTClubCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -178,6 +181,17 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
     }else if (indexPath.section==2){
         if (indexPath.row==0) {
             TTTableHeaderViewController *vc = [[TTTableHeaderViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row==1){
+            RadioCollectionViewController *vc = [[RadioCollectionViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            TagsCollectionViewController *vc = [[TagsCollectionViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else if(indexPath.section==3){
+        if (indexPath.row==0) {
+            CardCollectionViewController *vc = [[CardCollectionViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else{

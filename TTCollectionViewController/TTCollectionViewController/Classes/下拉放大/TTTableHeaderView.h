@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TTTableHeaderView : UIView
 /// 背景图
 @property (nonatomic, strong) UIImageView   *imagesView;
+@property (nonatomic, strong) UIImageView   *avatarView;
 @end
 
 NS_ASSUME_NONNULL_END

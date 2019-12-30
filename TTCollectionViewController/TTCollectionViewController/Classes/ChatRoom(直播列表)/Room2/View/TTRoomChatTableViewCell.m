@@ -13,7 +13,7 @@
 @interface TTRoomChatTableViewCell()
 
 /// 显示消息内容的Label
-@property(nonatomic, strong) YYLabel *messsageLabel;
+@property (nonatomic, strong) YYLabel *messsageLabel;
 @property (nonatomic, strong) UIView *messageView;
 
 @end

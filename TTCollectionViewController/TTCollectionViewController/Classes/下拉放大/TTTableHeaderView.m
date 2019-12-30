@@ -14,7 +14,8 @@
     if (self = [super initWithFrame:frame]) {
         [self initView];
         self.backgroundColor = [UIColor clearColor];
-        self.imagesView.image = [UIImage imageNamed:@"c7_mine_背景_x"];
+        self.avatarView.image = [UIImage imageNamed:@"1801577716159_.pic_hd"];
+        self.imagesView.image = [UIImage imageNamed:@"WechatIMG42"];
     }
     return self;
 }
@@ -23,6 +24,13 @@
     [self addSubview:self.imagesView];
     [self.imagesView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.equalTo(self);
+    }];
+    
+    [self addSubview:self.avatarView];
+    [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@(20));
+        make.width.height.equalTo(@(60));
+        make.bottom.equalTo(self.mas_bottom).offset(-20);
     }];
 }
 
@@ -33,4 +41,10 @@
     return _imagesView;
 }
 
+- (UIImageView *)avatarView{
+    if (!_avatarView) {
+        _avatarView = [[UIImageView alloc] init];
+    }
+    return _avatarView;
+}
 @end
