@@ -28,8 +28,7 @@
 - (void) initView{
     [self addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@(20));
-        make.centerY.equalTo(self);
+        make.centerY.centerX.equalTo(self);
     }];
 }
 

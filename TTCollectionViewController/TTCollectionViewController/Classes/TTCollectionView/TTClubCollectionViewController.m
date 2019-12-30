@@ -19,6 +19,7 @@
 #import "RadioCollectionViewController.h"
 #import "TagsCollectionViewController.h"
 #import "CardCollectionViewController.h"
+#import "HorizontalScrollViewController.h"
 static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
 
 @interface TTClubCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -193,10 +194,13 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
         if (indexPath.row==0) {
             CardCollectionViewController *vc = [[CardCollectionViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if(indexPath.row==1){
+            HorizontalScrollViewController *vc = [[HorizontalScrollViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }else{
-        NSString *tipsTxext = [NSString stringWithFormat:@"点击选择了第%ld组，第%ld个方块",(long)indexPath.section,(long)indexPath.row];
-        Toast(tipsTxext);
+//        NSString *tipsTxext = [NSString stringWithFormat:@"点击选择了第%ld组，第%ld个方块",(long)indexPath.section,(long)indexPath.row];
+//        Toast(tipsTxext);
     }
 }
 // CollectionViewCell取消选中会调用

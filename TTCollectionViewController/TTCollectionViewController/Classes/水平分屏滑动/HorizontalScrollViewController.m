@@ -68,14 +68,14 @@ static NSString * const reuseIdentifier = @"HorizontalScrollCell";
         collection.pagingEnabled = YES;
         collection.delegate   = self;
         collection.dataSource = self;
-        [collection registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+        [collection registerClass:[HorizontalScrollCell class] forCellWithReuseIdentifier:reuseIdentifier];
         [self.view addSubview:collection];
         [self.view bringSubviewToFront:self.pageControl];
         _collectionView = collection;
         [collection mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(@200);
-            make.height.mas_equalTo(@300);
-            make.left.right.mas_equalTo(@0);
+            make.top.mas_equalTo(@(100));
+            make.height.mas_equalTo(@(300));
+            make.left.right.mas_equalTo(@(0));
         }];
     }
     return _collectionView;
