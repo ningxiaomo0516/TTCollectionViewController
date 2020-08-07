@@ -20,6 +20,7 @@
 #import "TagsCollectionViewController.h"
 #import "CardCollectionViewController.h"
 #import "HorizontalScrollViewController.h"
+#import "YKOrderViewController.h"
 static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
 
 @interface TTClubCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -196,6 +197,9 @@ static NSString* reuseIdentifierBanner  = @"TTBannerViewCell";
             [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.row==1){
             HorizontalScrollViewController *vc = [[HorizontalScrollViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if(indexPath.row==2){
+            YKOrderViewController *vc = [[YKOrderViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else{

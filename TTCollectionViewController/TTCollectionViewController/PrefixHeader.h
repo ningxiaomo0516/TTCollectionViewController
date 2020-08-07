@@ -26,7 +26,8 @@
 
 #define kViewColorNormal kColorWithRGB(244, 244, 244)
 #define kNavigationColorNormal kColorWithRGB(211, 0, 0)
-#define kColorText51 kColorWithRGB(51, 51, 51)
+#define kTextColor51 kColorWithRGB(51, 51, 51)
+#define kTextColor153 kColorWithRGB(51, 51, 51)
 #define kClearColor [UIColor clearColor]
 #define kWhiteColor [UIColor whiteColor]
 
